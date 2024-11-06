@@ -1,0 +1,14 @@
+#ifndef SV_IOT_DEFINE_H
+#define SV_IOT_DEFINE_H
+
+typedef enum {
+    PHASE_1_CMD_ON,
+    PHASE_1_CMD_OFF,
+    PHASE_2_CMD_ON,
+    PHASE_2_CMD_OFF,
+    PHASE_3_CMD_ON,
+    PHASE_3_CMD_OFF,
+    CABINET_CMD_ACTIVE,
+    CABINET_CMD_DEACTIVE,
+}SERVER_CMD;
+#endif //SV_IOT_DEFINE_H

@@ -9,4 +9,4 @@ add_library(sdk_common
         mqtt/mqtt_client.h
 )
 
-target_link_libraries(sdk_common sdk_utils)
+target_link_libraries(sdk_common sdk_utils sdk_drivers)
