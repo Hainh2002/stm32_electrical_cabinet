@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsdk_utils.a CMakeFiles/sdk_utils.dir/containers/u_fifo.c.o
+/usr/bin/ranlib libsdk_utils.a

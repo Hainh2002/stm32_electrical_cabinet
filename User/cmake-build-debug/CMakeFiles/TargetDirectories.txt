@@ -1,0 +1,8 @@
+/mnt/d/Per_prj/Code_draft/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/d/Per_prj/Code_draft/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/mnt/d/Per_prj/Code_draft/cmake-build-debug/common/CMakeFiles/sdk_common.dir
+/mnt/d/Per_prj/Code_draft/cmake-build-debug/common/CMakeFiles/edit_cache.dir
+/mnt/d/Per_prj/Code_draft/cmake-build-debug/common/CMakeFiles/rebuild_cache.dir
+/mnt/d/Per_prj/Code_draft/cmake-build-debug/utils/CMakeFiles/sdk_utils.dir
+/mnt/d/Per_prj/Code_draft/cmake-build-debug/utils/CMakeFiles/edit_cache.dir
+/mnt/d/Per_prj/Code_draft/cmake-build-debug/utils/CMakeFiles/rebuild_cache.dir

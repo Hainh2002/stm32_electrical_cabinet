@@ -1,0 +1,160 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "common/libsdk_common.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"common/CMakeLists.txt",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 7,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 12,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 7,
+				"parent" : 3
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g"
+				},
+				{
+					"fragment" : "-std=gnu11"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 4,
+					"path" : "/mnt/d/Per_prj/Code_draft/utils"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/mnt/d/Per_prj/Code_draft/utils/containers"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/mnt/d/Per_prj/Code_draft/utils/logger"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/mnt/d/Per_prj/Code_draft/utils/string"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/mnt/d/Per_prj/Code_draft/utils/timing"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/mnt/d/Per_prj/Code_draft/common"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/mnt/d/Per_prj/Code_draft/common/mqtt"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/mnt/d/Per_prj/Code_draft/common/at_modem"
+				}
+			],
+			"language" : "C",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "11"
+			},
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "sdk_utils::@c810615cce0f7acb82dc"
+		}
+	],
+	"id" : "sdk_common::@bfc844598bd03e848b3c",
+	"name" : "sdk_common",
+	"nameOnDisk" : "libsdk_common.a",
+	"paths" : 
+	{
+		"build" : "common",
+		"source" : "common"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "common/mqtt/mqtt_client.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "common/mqtt/mqtt_client.h",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}
