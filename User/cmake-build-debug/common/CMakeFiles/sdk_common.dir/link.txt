@@ -1,2 +1,0 @@
-/usr/bin/ar qc libsdk_common.a CMakeFiles/sdk_common.dir/mqtt/mqtt_client.c.o
-/usr/bin/ranlib libsdk_common.a
