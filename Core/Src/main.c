@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "sv_power.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
