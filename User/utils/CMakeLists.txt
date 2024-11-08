@@ -9,6 +9,7 @@ set(UTILS_SRC
         sm_types.h
         containers/u_fifo.c
         containers/u_fifo.h
+        timing/date_time.h
 )
 
 add_library(sdk_utils STATIC ${UTILS_SRC})

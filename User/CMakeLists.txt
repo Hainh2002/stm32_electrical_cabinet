@@ -19,6 +19,7 @@ include_directories(
         drivers/lte
 
         services/iot
+        services/relays
 
         libs
         libs/tiny-json
@@ -32,5 +33,6 @@ add_subdirectory(common)
 add_subdirectory(utils)
 add_subdirectory(drivers)
 add_subdirectory(services/iot)
+add_subdirectory(services/relays)
 add_subdirectory(libs)
 add_subdirectory(hals)
