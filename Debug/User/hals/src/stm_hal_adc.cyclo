@@ -1,8 +1,0 @@
-../User/hals/src/stm_hal_adc.c:14:15:sm_hal_adc_init	1
-../User/hals/src/stm_hal_adc.c:19:6:sm_hal_adc_deinit	1
-../User/hals/src/stm_hal_adc.c:24:10:sm_hal_adc_read	1
-../User/hals/src/stm_hal_adc.c:29:9:sm_hal_adc_start	1
-../User/hals/src/stm_hal_adc.c:34:9:sm_hal_adc_stop	1
-../User/hals/src/stm_hal_adc.c:38:6:sm_hal_adc_set_cb	1
-../User/hals/src/stm_hal_adc.c:42:9:sm_hal_adc_open	1
-../User/hals/src/stm_hal_adc.c:45:9:sm_hal_adc_close	1

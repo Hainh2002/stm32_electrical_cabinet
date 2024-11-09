@@ -1,7 +1,0 @@
-../User/hals/src/stm_hal_timer.c:13:17:sm_hal_timer_init	2
-../User/hals/src/stm_hal_timer.c:24:6:sm_hal_timer_deinit	2
-../User/hals/src/stm_hal_timer.c:30:9:sm_hal_timer_set_period	2
-../User/hals/src/stm_hal_timer.c:36:6:sm_hal_timer_set_callback	2
-../User/hals/src/stm_hal_timer.c:44:9:sm_hal_timer_start	2
-../User/hals/src/stm_hal_timer.c:50:9:sm_hal_timer_stop	2
-../User/hals/src/stm_hal_timer.c:56:6:sm_hal_timer_irq	3

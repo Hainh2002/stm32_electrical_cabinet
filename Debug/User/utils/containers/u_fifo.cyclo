@@ -1,4 +1,0 @@
-../User/utils/containers/u_fifo.c:6:6:fifo_init	2
-../User/utils/containers/u_fifo.c:20:6:fifo_enqueue	2
-../User/utils/containers/u_fifo.c:32:6:fifo_dequeue	2
-../User/utils/containers/u_fifo.c:44:6:fifo_free	1
