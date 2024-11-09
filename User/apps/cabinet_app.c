@@ -7,13 +7,13 @@
 
 sm_hal_uart_t *test_port;
 
-void main_app_setup(){
+void cabinet_app_setup(){
 	// BSP INIT
 	bsp_init();
 
 }
 
-void main_app_loop(){
+void cabinet_app_loop(){
 	test_port = bsp_get_dbg_uart();
 	while (1){
 		char buff[256];

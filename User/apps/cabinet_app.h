@@ -5,8 +5,8 @@
 #ifndef CABINET_APP_H
 #define CABINET_APP_H
 
-void main_app_setup();
+void cabinet_app_setup();
 
-void main_app_loop();
+void cabinet_app_loop();
 
 #endif //CABINET_APP_H

@@ -44,8 +44,9 @@ void bsp_init(){
 
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
+	UART_HandleTypeDef* p_uart = g_curr_1_uart->m_channel;
 /*
-	if(huart->Instance == (UART_HandleTypeDef)(g_curr_1_uart->m_channel)->Instance){
+	if(huart->Instance == (UART_HandleTypeDef)()->Instance){
 //		HAL_UART_Transmit(&huart1,&rx_data,sizeof(rx_data), 100);
 		sm_hal_uart_rx_irq(&g_curr_1_uart, g_curr_1_uart->m_buff);
 		HAL_UART_Receive_IT(&huart1, & g_curr_1_uart->m_buff, 1);
@@ -69,8 +70,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 		HAL_UART_Receive_IT(&huart4, &rx_data, 1);
 	}
 */
-
-	if(huart->Instance == (UART_HandleTypeDef)(g_debug_uart->m_channel)->Instance){
+	p_uart = g_debug_uart->m_channel;
+	if(huart->Instance == p_uart->Instance){
 //		HAL_UART_Transmit(&huart5,&rx_data,sizeof(rx_data), 100);
 		sm_hal_uart_rx_irq(&g_debug_uart, g_debug_uart->m_buff);
 		HAL_UART_Receive_IT(&huart5, & g_debug_uart->m_buff, 1);
