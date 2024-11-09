@@ -9,7 +9,8 @@
 #define SM_HAL_UART_H_
 
 #include <stdint.h>
-
+#include "sm_hal_porting.h"
+#include "u_fifo.h"
 /**
  * @enum
  * @brief
@@ -32,10 +33,32 @@ typedef enum{
     SM_UART_DATA_BIT9         /**< SM_UART_DATA_BIT9 */
 }SM_UART_DATA_BIT;
 
-typedef void sm_hal_uart_t;
 
+typedef struct sm_hal_uart sm_hal_uart_t;
+typedef struct uart_irq uart_irq_t;
 typedef void (*sm_hal_uart_rx_irq_fn_t)(sm_hal_uart_t*, uint8_t, void*);
 typedef void (*sm_hal_uart_tx_irq_fn_t)(sm_hal_uart_t*, void*);
+struct uart_irq {
+    sm_hal_uart_rx_irq_fn_t m_rx_cb;
+    void                    *m_rx_arg;
+    sm_hal_uart_tx_irq_fn_t m_tx_cb;
+    void                    *m_tx_arg;
+} ;
+struct sm_hal_uart{
+	UART_HandleTypeDef *m_channel;
+    uint32_t m_baud;
+    uint8_t m_stop_bit;
+    uint8_t m_data_bit;
+    FIFO_t m_rx_buff;
+#ifdef MULTI_CALLBACK
+    uart_irq_t  m_irq[UART_CALLBACK_NUM_MAX];
+    uint8_t     m_irq_cb_num;
+#else
+    uart_irq_t m_irq;
+    uint8_t m_buff;
+#endif
+
+};
 
 /**
  * @fn sm_hal_uart_t sm_hal_uart_init*(sm_hal_uart_proc_t*, void*)
@@ -45,7 +68,7 @@ typedef void (*sm_hal_uart_tx_irq_fn_t)(sm_hal_uart_t*, void*);
  * @param handle
  * @return
  */
-sm_hal_uart_t* sm_hal_uart_init(const void* _channel, uint32_t _baud, uint8_t _stop_bit, uint8_t _data_bit);
+sm_hal_uart_t* sm_hal_uart_init(const void* _channel, uint32_t _baud, uint8_t _stop_bit, uint8_t _data_bit, uint32_t buffer_size);
 
 /**
  * @fn void sm_hal_uart_deinit(sm_hal_uart_t*)

@@ -1,0 +1,2 @@
+../User/hals/src/stm_hal_delay.c:4:6:sm_hal_delay_ms	16	static
+../User/hals/src/stm_hal_delay.c:8:6:sm_hal_delay_us	16	static

@@ -1,0 +1,11 @@
+../User/hals/src/stm_hal_uart.c:13:16:sm_hal_uart_init	32	static
+../User/hals/src/stm_hal_uart.c:39:6:sm_hal_uart_deinit	16	static
+../User/hals/src/stm_hal_uart.c:47:9:sm_hal_uart_config	32	static
+../User/hals/src/stm_hal_uart.c:59:9:sm_hal_uart_write	32	static
+../User/hals/src/stm_hal_uart.c:69:9:sm_hal_uart_read	32	static
+../User/hals/src/stm_hal_uart.c:86:6:sm_hal_uart_set_rx_cb	24	static
+../User/hals/src/stm_hal_uart.c:98:6:sm_hal_uart_set_tx_cb	24	static
+../User/hals/src/stm_hal_uart.c:108:9:sm_hal_uart_open	24	static
+../User/hals/src/stm_hal_uart.c:118:9:sm_hal_uart_close	24	static
+../User/hals/src/stm_hal_uart.c:128:9:sm_hal_uart_rx_irq	24	static
+../User/hals/src/stm_hal_uart.c:147:9:sm_hal_uart_tx_irq	16	static

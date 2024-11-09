@@ -14,25 +14,7 @@ include_directories(
         common
         common/mqtt
         common/at_modem
-
-        drivers
-        drivers/lte
-
-        services/iot
-        services/relays
-
-        libs
-        libs/tiny-json
-        libs/json-maker
-
-        hals/include
-        hals/src
 )
 
 add_subdirectory(common)
 add_subdirectory(utils)
-add_subdirectory(drivers)
-add_subdirectory(services/iot)
-add_subdirectory(services/relays)
-add_subdirectory(libs)
-add_subdirectory(hals)
