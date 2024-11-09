@@ -10,7 +10,7 @@
 sm_modem_t* sm_modem_init(sm_hal_io_t *io, sm_hal_uart_t *driver){
 	sm_modem_t* modem = mem_alloc(sizeof(sm_modem_t));
     modem->reset_pin = io;
-    modemd->river = driver;
+    modemd->driver = driver;
 	modem->buff = NULL;
 	return modem;
 }

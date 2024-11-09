@@ -45,7 +45,7 @@ struct uart_irq {
     void                    *m_tx_arg;
 } ;
 struct sm_hal_uart{
-	UART_HandleTypeDef *m_channel;
+	void *m_channel;
     uint32_t m_baud;
     uint8_t m_stop_bit;
     uint8_t m_data_bit;
