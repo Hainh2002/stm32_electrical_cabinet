@@ -44,4 +44,9 @@ typedef enum {
     MODBUS_EXCEPTION_SERVER_DEVICE_FAILURE = 4, /**< Modbus exception 4 */
 }MODBUS_ERROR_CODE;
 
+#define SV_SETTING_REG_NUMBER 30
+#define SV_SETTING_REG_INDEX  0
+
+
+
 #endif //SM_MODBUS_DEFINE_H

@@ -28,7 +28,7 @@ typedef struct{
 	void* m_cb_arg;
 }sv_power_impl_t;
 
-sv_power_impl_t g_power;
+static sv_power_impl_t g_power;
 
 static int32_t mb_master_send_if(const uint8_t* _data, int32_t _len, int32_t _timeout, void* _arg){
 	if(g_power.m_current_phase_read >= PHASE_NUMBER){
@@ -88,7 +88,7 @@ void sm_power_process(){
 		uint16_t buffer[10] = {0,};
 		int ret = sm_sv_mb_master_read_input_regs(g_power.m_mb_master, 1, 0, 10, buffer);
 		if(ret == MODBUS_ERROR_NONE){
-			memcpy(&g_power.m_phase_data[id], buffer, sizeof(sv_power_phase_data_t));
+			memcpy(&g_power.m_phase_data[id].m_cur, buffer + 2, 4);
 			LOG_INF(TAG, "Read phase %d data SUCCEED!!!");
 			LOG_INF(TAG, "Phase %d current is %d", id, g_power.m_phase_data[id].m_cur);
 		}else{
