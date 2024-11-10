@@ -10,7 +10,7 @@
 sm_modem_t* sm_modem_init(sm_hal_io_t *io, sm_hal_uart_t *driver){
 	sm_modem_t* modem = mem_alloc(sizeof(sm_modem_t));
     modem->reset_pin = io;
-    modemd->river = driver;
+    modem->driver = driver;
 	modem->buff = NULL;
 	return modem;
 }
@@ -45,7 +45,7 @@ int32_t sm_modem_cmd(sm_modem_t *modem, char* cmd, char* res_ok, char* res_fail,
         }
         time++;
         if(time > timeout) {
-        	LOG_ERR(TAG, "timeout");
+//        	LOG_ERR(TAG, "timeout");
 			res = -1;
             break;
         }

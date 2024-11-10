@@ -12,6 +12,7 @@ typedef struct {
     uint32_t tail;
     uint32_t count;
     uint32_t size;
+    uint32_t num_max;
 #ifdef _FREERTOS
     SemaphoreHandle_t mutex;
 #endif

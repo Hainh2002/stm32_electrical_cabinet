@@ -3,7 +3,7 @@
 
 #include "mqtt_client.h"
 #include "sm_elapsed_timer.h"
-#include "sv_iot_topic.h"
+
 
 #define IOT_SUB_TOPIC_NUMBER 	4
 #define IOT_PUB_QUEUE_SIZE		4

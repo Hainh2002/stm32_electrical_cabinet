@@ -4,11 +4,13 @@
 #include "tiny-json.h"
 #include "sm_logger.h"
 #include "sv_iot_define.h"
+#include "sv_iot_topic.h"
+#include "mqtt_client.h"
 
 #define IOT_IDLE_TIMEOUT	15000
 #define IOT_OPEN_TIMEOUT	5000
 #define IOT_SUB_TIMEOUT		5000
-#define IOT_SYNC_TIMEOUT	5000
+#define IOT_SYNC_TIMEOUT	30000
 
 #define JSON_OBJ_MAX		32
 
@@ -58,8 +60,8 @@ sv_iot_t* sv_iot_create(mqtt_client_t	    *client,
 	g_sv_iot.event_arg = event_arg;
 
 	g_sv_iot.retry = 0;
-
-	sv_iot_build_topic(g_sv_iot.device_name);
+	g_sv_iot.device_name = client->config.client_id;
+	sv_iot_build_topic(client->config.client_id);
 
 	g_sv_iot.sub_topics[0].topic = sv_iot_get_topic_cfg();
 	g_sv_iot.sub_topics[0].topic_handle = sv_iot_on_config_msg;
@@ -82,6 +84,11 @@ int32_t sv_iot_push_data_to_cloud(sv_iot_t* this, char* topic, char* payload){
 	if (!this || !topic || !payload) return -1;
 
 	this->pub_topics[this->pub_head].topic = topic;
+	uint32_t len = strlen(payload)+1;
+	this->pub_topics[this->pub_head].payload = malloc(len);
+	if (!this->pub_topics[this->pub_head].payload)
+		return -1;
+	memset(this->pub_topics[this->pub_head].payload, 0, len);
 	memcpy(this->pub_topics[this->pub_head].payload, payload, strlen(payload));
 
 	if (++this->pub_head == IOT_PUB_QUEUE_SIZE){
@@ -132,6 +139,7 @@ int32_t sv_iot_process(sv_iot_t* this){
 			}else{
 				if (++this->sub_topic_num == IOT_SUB_TOPIC_NUMBER){
 					this->state = IOT_STATE_RUNNING;
+					elapsed_timer_resetz(&this->timeout, IOT_SYNC_TIMEOUT);
 				}
 			}
 		}
@@ -146,16 +154,19 @@ int32_t sv_iot_process(sv_iot_t* this){
 				memset(sync_buff, 0, IOT_PAYLOAD_SIZE);
 				this->event_cb->on_sync(sync_buff, this->event_arg);
 				sv_iot_push_data_to_cloud(this, sv_iot_get_topic_update(), sync_buff);
+				elapsed_timer_reset(&this->timeout);
 			}
 		}
 		if (this->pub_tail != this->pub_head){
 			err = client->pub(client,
 							this->pub_topics[this->pub_tail].topic,
 							this->pub_topics[this->pub_tail].payload);
+
 			if (err) {
 				/// LOG_ERR
 			}
 			this->pub_topics[this->pub_tail].topic = NULL;
+			free(this->pub_topics[this->pub_tail].payload);
 			this->pub_topics[this->pub_tail].payload = NULL;
 			if (++this->pub_tail == IOT_PUB_QUEUE_SIZE){
 				this->pub_tail = 0;
