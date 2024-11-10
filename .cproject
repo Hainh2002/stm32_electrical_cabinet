@@ -67,6 +67,11 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/User/common/mqtt}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/User/bsp}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/User/apps}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/stm32_electrical_cabinet/User/common/modbus}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/stm32_electrical_cabinet/User/common/modbus/mb_slave}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/stm32_electrical_cabinet/User/common/modbus/mb_master}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/stm32_electrical_cabinet/User/libs/nanoModbus}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/stm32_electrical_cabinet/User/services/sv_power}&quot;"/>
 								</option>
 								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.fdata.865015526" name="Place data in their own sections (-fdata-sections)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.fdata" useByScannerDiscovery="false" value="false" valueType="boolean"/>
 								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.ffunction.23807416" name="Place functions in their own sections (-ffunction-sections)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.ffunction" useByScannerDiscovery="false" value="false" valueType="boolean"/>

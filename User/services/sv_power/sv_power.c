@@ -20,7 +20,7 @@ typedef struct{
 	sm_mb_master_t* m_mb_master;
 	data_queue_t m_data_queue[PHASE_NUMBER];
 	uint8_t m_current_phase_read;
-	USART_TypeDef* m_p_uart[PHASE_NUMBER];
+	UART_HandleTypeDef* m_p_uart[PHASE_NUMBER];
 	sv_power_phase_data_t m_phase_data[PHASE_NUMBER];
 	elapsed_timer_t m_sync_timer;
 
@@ -34,7 +34,8 @@ static int32_t mb_master_send_if(const uint8_t* _data, int32_t _len, int32_t _ti
 	if(g_power.m_current_phase_read >= PHASE_NUMBER){
 		return -1;
 	}
-    return 	HAL_UART_Transmit(g_power.m_p_uart[g_power.m_current_phase_read], _data, _len, _timeout);
+	HAL_UART_Transmit(g_power.m_p_uart[g_power.m_current_phase_read], _data, _len, _timeout);
+    return _len;
 }
 static int32_t mb_master_rcv_if(uint8_t* _buf, int32_t _len, int32_t _timeout, void* _arg){
 	if(g_power.m_current_phase_read >= PHASE_NUMBER){
@@ -44,7 +45,7 @@ static int32_t mb_master_rcv_if(uint8_t* _buf, int32_t _len, int32_t _timeout, v
 }
 
 
-void sm_sv_power_init(USART_TypeDef* _p_uart_p1, USART_TypeDef* _p_uart_p2, USART_TypeDef* _p_uart_p3){
+void sm_sv_power_init(UART_HandleTypeDef* _p_uart_p1, UART_HandleTypeDef* _p_uart_p2, UART_HandleTypeDef* _p_uart_p3){
 	g_power.m_p_uart[0] = _p_uart_p1;
 	g_power.m_p_uart[1] = _p_uart_p2;
 	g_power.m_p_uart[2] = _p_uart_p3;
@@ -77,9 +78,11 @@ sv_power_phase_data_t* sv_power_get_phase_data(uint8_t _phase_index){
 	return &g_power.m_phase_data[_phase_index];
 }
 
-void sm_power_process(){
+void sm_sv_power_process(){
 	if(!elapsed_timer_get_remain(&g_power.m_sync_timer)){
-		if(g_power.m_current_phase_read++ >= PHASE_NUMBER){
+		elapsed_timer_reset(&g_power.m_sync_timer);
+		g_power.m_current_phase_read++;
+		if(g_power.m_current_phase_read >= PHASE_NUMBER){
 			g_power.m_current_phase_read = 0;
 		}
 
@@ -88,8 +91,10 @@ void sm_power_process(){
 		uint16_t buffer[10] = {0,};
 		int ret = sm_sv_mb_master_read_input_regs(g_power.m_mb_master, 1, 0, 10, buffer);
 		if(ret == MODBUS_ERROR_NONE){
-			memcpy(&g_power.m_phase_data[id].m_cur, buffer + 2, 4);
+			memcpy(&g_power.m_phase_data[id].m_vol, buffer , 2);
+			memcpy(&g_power.m_phase_data[id].m_cur, buffer + 1, 4);
 			LOG_INF(TAG, "Read phase %d data SUCCEED!!!");
+			LOG_INF(TAG, "Phase %d vol is %d", id, g_power.m_phase_data[id].m_vol);
 			LOG_INF(TAG, "Phase %d current is %d", id, g_power.m_phase_data[id].m_cur);
 		}else{
 			LOG_ERR(TAG, "Read phase %d data FAILED, reset to 0", id);
@@ -100,7 +105,6 @@ void sm_power_process(){
 			g_power.m_cb(ret == MODBUS_ERROR_NONE, g_power.m_cb_arg);
 		}
 
-		elapsed_timer_reset(&g_power.m_sync_timer);
 	}
 }
 

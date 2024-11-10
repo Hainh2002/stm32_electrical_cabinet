@@ -21,7 +21,7 @@ typedef struct{
 
 typedef void(*sv_power_phase_sync_data_callback)(uint8_t status, void* arg);
 
-void sm_sv_power_init(USART_TypeDef* _p_uart_p1, USART_TypeDef* _p_uart_p2, USART_TypeDef* _p_uart_p3);
+void sm_sv_power_init(UART_HandleTypeDef* _p_uart_p1, UART_HandleTypeDef* _p_uart_p2, UART_HandleTypeDef* _p_uart_p3);
 
 void sm_sv_power_set_sync_cb(sv_power_phase_sync_data_callback _cb, void* _arg);
 
@@ -29,7 +29,7 @@ void sm_sv_power_feed_byte(uint8_t _phase_index, uint8_t _byte);
 
 sv_power_phase_data_t* sv_power_get_phase_data(uint8_t _phase_index);
 
-void sm_power_process();
+void sm_sv_power_process();
 
 
 #endif /* USER_SERVICES_SV_POWER_SV_POWER_H_ */
