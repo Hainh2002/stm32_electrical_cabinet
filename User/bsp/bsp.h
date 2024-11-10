@@ -14,7 +14,6 @@ sm_hal_uart_t* bsp_get_sim_uart();
 
 sm_hal_uart_t* bsp_get_dbg_uart();
 
-void bsp_uart_init();
-
+void bsp_init();
 
 #endif /* USER_BSP_BSP_H_ */

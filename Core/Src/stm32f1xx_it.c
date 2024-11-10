@@ -55,7 +55,6 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
-extern RTC_HandleTypeDef hrtc;
 extern UART_HandleTypeDef huart4;
 extern UART_HandleTypeDef huart5;
 extern UART_HandleTypeDef huart1;
@@ -202,47 +201,6 @@ void SysTick_Handler(void)
 /* For the available peripheral interrupt handler names,                      */
 /* please refer to the startup file (startup_stm32f1xx.s).                    */
 /******************************************************************************/
-
-/**
-  * @brief This function handles RTC global interrupt.
-  */
-void RTC_IRQHandler(void)
-{
-  /* USER CODE BEGIN RTC_IRQn 0 */
-
-  /* USER CODE END RTC_IRQn 0 */
-  HAL_RTCEx_RTCIRQHandler(&hrtc);
-  /* USER CODE BEGIN RTC_IRQn 1 */
-
-  /* USER CODE END RTC_IRQn 1 */
-}
-
-/**
-  * @brief This function handles Flash global interrupt.
-  */
-void FLASH_IRQHandler(void)
-{
-  /* USER CODE BEGIN FLASH_IRQn 0 */
-
-  /* USER CODE END FLASH_IRQn 0 */
-  HAL_FLASH_IRQHandler();
-  /* USER CODE BEGIN FLASH_IRQn 1 */
-
-  /* USER CODE END FLASH_IRQn 1 */
-}
-
-/**
-  * @brief This function handles RCC global interrupt.
-  */
-void RCC_IRQHandler(void)
-{
-  /* USER CODE BEGIN RCC_IRQn 0 */
-
-  /* USER CODE END RCC_IRQn 0 */
-  /* USER CODE BEGIN RCC_IRQn 1 */
-
-  /* USER CODE END RCC_IRQn 1 */
-}
 
 /**
   * @brief This function handles USART1 global interrupt.

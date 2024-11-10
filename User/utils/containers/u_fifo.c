@@ -13,17 +13,18 @@ bool fifo_init(FIFO_t *fifo, uint32_t item_size, uint32_t item_num) {
     fifo->tail = 0;
     fifo->count = 0;
     fifo->size = item_size;
+    fifo->num_max = item_num;
     return true;
 }
 
 // Add data to the FIFO
 bool fifo_enqueue(FIFO_t *fifo, void* data) {
-    if (fifo->count == fifo->size) {
+    if (fifo->count == fifo->num_max) {
         // FIFO is full
         return false;
     }
     memcpy(fifo->buffer + fifo->head * fifo->size, data, fifo->size);
-    fifo->head = (fifo->head + 1) % fifo->size;
+    fifo->head = (fifo->head + 1) % fifo->num_max;
     fifo->count++;
     return true;
 }
@@ -34,8 +35,8 @@ bool fifo_dequeue(FIFO_t *fifo, void *data) {
         // FIFO is empty
         return false;
     }
-    memcpy(fifo->buffer + fifo->tail * fifo->size, data, fifo->size);
-    fifo->tail = (fifo->tail + 1) % fifo->size;
+    memcpy(data, fifo->buffer + fifo->tail * fifo->size, fifo->size);
+    fifo->tail = (fifo->tail + 1) % fifo->num_max;
     fifo->count--;
     return true;
 }

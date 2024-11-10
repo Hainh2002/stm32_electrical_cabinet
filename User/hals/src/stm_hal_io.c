@@ -53,7 +53,7 @@ int32_t sm_hal_io_set_value(sm_hal_io_t *_this, uint8_t _value){
     if (!_this) {
         return -1;
     }
-    HAL_GPIO_WritePin(_this->m_handle,_this->pin,value);
+//    HAL_GPIO_WritePin(_this->m_handle,_this->pin,value);
     return 0;
 
 }
@@ -62,8 +62,8 @@ uint8_t sm_hal_io_get_value(sm_hal_io_t *_this){
     if (!_this) {
         return 0;
     }
-    uint8_t ret = HAL_GPIO_ReadPin(_this->handle,_this->pin);
-    return ret;
+//    uint8_t ret = HAL_GPIO_ReadPin(_this->handle,_this->pin);
+    return 0;
 }
 
 

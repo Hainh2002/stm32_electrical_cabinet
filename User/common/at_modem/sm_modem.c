@@ -45,7 +45,7 @@ int32_t sm_modem_cmd(sm_modem_t *modem, char* cmd, char* res_ok, char* res_fail,
         }
         time++;
         if(time > timeout) {
-        	LOG_ERR(TAG, "timeout");
+//        	LOG_ERR(TAG, "timeout");
 			res = -1;
             break;
         }
