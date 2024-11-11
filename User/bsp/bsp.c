@@ -5,7 +5,7 @@
  *      Author: admin
  */
 #include "bsp.h"
-
+#include "date_time.h"
 #include "main.h"
 
 #include "u_queue.h"
@@ -20,11 +20,31 @@ sm_hal_uart_t *g_curr_3_uart;
 sm_hal_uart_t *g_debug_uart;
 sm_hal_uart_t *g_sim_uart;
 
+extern UART_HandleTypeDef huart4;
+extern UART_HandleTypeDef huart5;
+extern UART_HandleTypeDef huart1;
+extern UART_HandleTypeDef huart2;
+extern UART_HandleTypeDef huart3;
+
+extern RTC_HandleTypeDef hrtc;
+
 sm_hal_uart_t* bsp_get_sim_uart(){
 	return g_sim_uart;
 }
 sm_hal_uart_t* bsp_get_dbg_uart(){
 	return g_debug_uart;
+}
+
+void bsp_get_rtc_time(sys_time_t *time){
+
+}
+
+void bsp_get_rtc_datetime(sys_datetime_t *time){
+
+}
+
+void bsp_set_rtc_time(sys_time_t *time){
+
 }
 
 void bsp_uart_init(){
@@ -42,7 +62,7 @@ void bsp_init(){
 	bsp_uart_init();
 }
 
-
+void
 
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
