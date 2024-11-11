@@ -12,12 +12,13 @@
 #include "sm_elapsed_timer.h"
 
 #define RELAY_NUMBER_MAX        3
+#define SV_RELAY_PERIOD			1000
 
 typedef struct sv_relay sv_relay_t;
 
 typedef struct relay_data   relay_data_t;
 
-typedef void (*update_sys_time_if)(bool ,sys_time_t *);
+typedef void (*update_sys_time_if)(sys_time_t *);
 
 typedef enum {
 	MANUAL_MODE = 0,
@@ -55,7 +56,6 @@ int32_t sv_relay_change_mode(sv_relay_t* this,
 								RELAY_MODE mode);
 
 int32_t sv_relay_set_alarm_common(sv_relay_t* this,
-									uint8_t relay_id,
 									sys_time_t* time_on,
 									sys_time_t* time_off);
 
@@ -64,6 +64,9 @@ int32_t sv_relay_set_alarm(sv_relay_t* this,
 							sys_time_t* time_on,
 							sys_time_t* time_off);
 
+int32_t sv_relay_set_state(sv_relay_t* this,
+							uint8_t relay_id,
+							uint8_t state);
 
 int32_t sv_relay_process(sv_relay_t* this);
 
