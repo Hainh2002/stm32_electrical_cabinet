@@ -8,6 +8,8 @@
 #include "bsp.h"
 #include "sv_iot.h"
 #include "sim_a76xx.h"
+#include "sv_power.h"
+
 //#include "sv_relay_alarm.h"
 
 typedef struct cabinet_app cabinet_app_t;

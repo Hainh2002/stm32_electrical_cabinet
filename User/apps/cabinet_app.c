@@ -13,7 +13,7 @@ void log_print(char* str){
 	str[len] = '\r';
 	str[len+1] = '\n';
 	str[len+2] = '\0';
-	sm_hal_uart_write(bsp_get_dbg_uart(), str, len+2);
+//	sm_hal_uart_write(bsp_get_dbg_uart(), str, len+2);
 }
 
 
@@ -63,7 +63,7 @@ void cabinet_app_init(){
 	// BSP INIT
 	bsp_init();
 	sm_logger_init(log_print, LOG_LEVEL_DEBUG);
-
+	sm_sv_power_init(&huart1, &huart2, &huart3);
 	// LOAD CONFIG
 
 	// DRIVER
@@ -98,7 +98,8 @@ void cabinet_app_init(){
 void cabinet_app_process(){
 	cabinet_app_t* this = (cabinet_app_t*)&g_cab_app;
 	while (1){
-		sv_iot_process(this->m_services.sv_iot);
+//		sv_iot_process(this->m_services.sv_iot);
+		sm_sv_power_process();
 	}
 }
 
